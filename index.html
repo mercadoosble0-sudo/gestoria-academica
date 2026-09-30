@@ -1,25 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<title>Gestoria Academica</title>
-<style>
-body{font-family: Arial; background: #f0f4f8; display:flex; justify-content:center; align-items:center; height:100vh; margin:0;}
-.login-box{background:white; padding:40px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1); width:320px; text-align:center;}
-h2{color:#2c3e50; margin-bottom:5px;}
-p{color:#7f8c8d; margin-bottom:20px;}
-input{width:100%; padding:12px; margin:8px 0; border:1px solid #ddd; border-radius:8px; box-sizing:border-box;}
-.btn{display:block; width:100%; padding:12px; background:#3498db; color:white; text-decoration:none; border-radius:8px; margin-top:15px; font-weight:bold;}
-.btn:hover{background:#2980b9;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestoría Académica - Historia Académica</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="login-box">
-<h2>Gestoria Academica</h2>
-<p>Inicio de sesion</p>
-<input type="text" placeholder="Usuario del padre">
-<input type="password" placeholder="Contraseña">
-<a class="btn" href="dashboard.html">Ingresar</a>
-</div>
+    <!-- HERO CON IMAGEN -->
+    <header class="hero">
+        <div class="overlay">
+            <h1>Gestoría Académica</h1>
+            <p>Mi página de historia académica para la clase</p>
+            <a href="#historia" class="btn">Ver mi historia</a>
+        </div>
+    </header>
+
+    <!-- SOBRE MI -->
+    <section id="historia" class="container">
+        <h2>📚 Mi Historia Académica</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500" alt="estudiantes">
+                <h3>Inicio</h3>
+                <p>Comencé mis estudios con el objetivo de formarme profesionalmente y aportar a mi comunidad en Chinú, Córdoba.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" alt="libros">
+                <h3>Proceso</h3>
+                <p>A lo largo de mi formación he aprendido valores como responsabilidad, dedicación y trabajo en equipo.</p>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500" alt="graduacion">
+                <h3>Meta</h3>
+                <p>Mi meta es culminar con éxito y seguir creciendo académicamente para mi futuro profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="galeria">
+        <h2>✨ Vida Estudiantil</h2>
+        <div class="imagenes">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400" alt="">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400" alt="">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400" alt="">
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Gestoría Académica - Creado por mercadoobledo-sudo</p>
+    </footer>
 </body>
-</html>
-            
+</html>            
