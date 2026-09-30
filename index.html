@@ -3,54 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestoría Académica - Historia Académica</title>
+    <title>Gestoría Académica</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- HERO CON IMAGEN -->
-    <header class="hero">
-        <div class="overlay">
-            <h1>Gestoría Académica</h1>
-            <p>Mi página de historia académica para la clase</p>
-            <a href="#historia" class="btn">Ver mi historia</a>
-        </div>
-    </header>
 
-    <!-- SOBRE MI -->
-    <section id="historia" class="container">
+<header class="hero">
+    <div class="overlay">
+        <h1>Gestoría Académica</h1>
+        <p>Mi página de historia académica para la clase</p>
+    </div>
+</header>
+
+<!-- SECCION PRINCIPAL CON 2 COLUMNAS -->
+<section class="container main-grid">
+    
+    <!-- LADO IZQUIERDO: TU HISTORIA -->
+    <div class="historia-box">
         <h2>📚 Mi Historia Académica</h2>
-        <div class="cards">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500" alt="estudiantes">
-                <h3>Inicio</h3>
-                <p>Comencé mis estudios con el objetivo de formarme profesionalmente y aportar a mi comunidad en Chinú, Córdoba.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" alt="libros">
-                <h3>Proceso</h3>
-                <p>A lo largo de mi formación he aprendido valores como responsabilidad, dedicación y trabajo en equipo.</p>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500" alt="graduacion">
-                <h3>Meta</h3>
-                <p>Mi meta es culminar con éxito y seguir creciendo académicamente para mi futuro profesional.</p>
-            </div>
-        </div>
-    </section>
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600" alt="estudiando" class="img-principal">
+        <h3>Inicio</h3>
+        <p>Comencé mis estudios con el objetivo de formarme profesionalmente y aportar a mi comunidad en Chinú, Córdoba.</p>
+        <p>Esta plataforma permite llevar el control académico de cada estudiante de la institución de forma fácil y organizada.</p>
+    </div>
 
-    <!-- GALERIA -->
-    <section class="galeria">
-        <h2>✨ Vida Estudiantil</h2>
-        <div class="imagenes">
-            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400" alt="">
-            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400" alt="">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400" alt="">
-        </div>
-    </section>
+    <!-- LADO DERECHO: CUADRO PARA PADRES - ESTO ES LO NUEVO -->
+    <div class="padres-box">
+        <h2>👨‍👩‍👧 Portal de Padres</h2>
+        <p class="sub">Ingresa el documento de tu hijo para ver su avance</p>
+        
+        <form id="formPadres">
+            <label>Documento del estudiante</label>
+            <input type="text" id="doc" placeholder="Ej: 1001234567" required>
+            
+            <label>Contraseña / Código</label>
+            <input type="password" id="codigo" placeholder="Ej: 1234" required>
 
-    <footer>
-        <p>© 2026 Gestoría Académica - Creado por mercadoobledo-sudo</p>
-    </footer>
+            <button type="submit" class="btn">Consultar Notas</button>
+        </form>
+
+        <!-- RESULTADO QUE VERAN LOS PADRES -->
+        <div id="resultado" class="resultado oculto">
+            <h3>Estudiante: Juan Pérez - Grado 10°</h3>
+            <ul>
+                <li>Matemáticas: <span>4.2 - Aprobado</span></li>
+                <li>Lenguaje: <span>4.5 - Aprobado</span></li>
+                <li>Ciencias: <span>3.8 - En proceso</span></li>
+                <li>Comportamiento: <span>Muy bueno</span></li>
+                <li>Asistencia: <span>95%</span></li>
+            </ul>
+            <a href="dashboard.html" class="link-dashboard">Ver historial completo →</a>
+        </div>
+
+        <p class="ayuda">¿Problemas para ingresar? Contacta a la institución.</p>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Gestoría Académica - Institución Educativa Chinú</p>
+</footer>
+
+<script>
+// Simulacion de consulta
+document.getElementById('formPadres').addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('resultado').classList.remove('oculto');
+});
+</script>
+
 </body>
-</html>            
+</html>
