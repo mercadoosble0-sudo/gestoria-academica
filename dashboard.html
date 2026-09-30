@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <litle> panel del padre</litle>
-        <link rel="tylesheeet" href="style.css">
-    </head>
-    <body>
-<div class="header">getoria acdemica-panel del padre de familia</div>
-<div clas="contrainer">
-    <h3>estudiante: salpicadero-grado 11 </h3>
-    <div class="card">matematica: 4.5 <span class="ok">aprobado</span></div>
-    <div class="card">ciencias: 3.2 <span class="mal">bajo</span></div>
-    <div class="card">hidtoria: 4.8 <span class="ok">excelente</span></div>
-    <div class="card">inasistencias: 2</div>
-    <a href="index.html" class="btn">cerrar secion</a>
+<head>
+<title>Panel del Padre</title>
+<style>
+body{font-family:Arial; background:#f0f4f8; margin:0; padding:20px;}
+.container{max-width:700px; margin:auto; background:white; padding:30px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.1);}
+h2{color:#2c3e50; text-align:center;}
+h3{background:#3498db; color:white; padding:15px; border-radius:10px; text-align:center;}
+.nota{display:flex; justify-content:space-between; padding:15px; border-bottom:1px solid #eee; font-size:18px;}
+.aprobado{color:green; font-weight:bold;}
+.bajo{color:red; font-weight:bold;}
+.excelente{color:#3498db; font-weight:bold; font-size:20px;}
+.faltas{margin-top:20px; background:#fff3cd; padding:15px; border-radius:10px; text-align:center; font-weight:bold;}
+.cerrar{display:block; margin-top:25px; text-align:center; background:#e74c3c; color:white; padding:12px; border-radius:8px; text-decoration:none; font-weight:bold;}
+.cerrar:hover{background:#c0392b;}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Gestoria Academica</h2>
+<h3>Panel del Padre de Familia</h3>
+<h2>Estudiante: Salpicadero - Grado 11</h2>
+
+<div class="nota"><span>Matematica:</span><span class="aprobado">4.5 - Aprobado</span></div>
+<div class="nota"><span>Ciencias:</span><span class="bajo">3.2 - Bajo</span></div>
+<div class="nota"><span>Historia:</span><span class="excelente">4.8 - Excelente</span></div>
+
+<div class="faltas">Inasistencias: 2</div>
+
+<a class="cerrar" href="index.html">Cerrar Sesion</a>
 </div>
-    </body>
+</body>
 </html>
