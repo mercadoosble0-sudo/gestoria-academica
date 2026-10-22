@@ -8,11 +8,12 @@
 body{font-family:Arial,sans-serif;background:#eef2f7;margin:0;padding:0;color:#333;}
 header{background:#1a3a5f;color:white;text-align:center;padding:30px 15px;}
 header h1{margin:0;font-size:32px;}
-.hero{max-width:900px;margin:20px auto;padding:0 20px;}
+.hero{max-width:1100px;margin:20px auto;padding:0 20px;}
 .hero img{width:100%;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.2);display:block;}
-.inspiracion{background:white;border-radius:16px;padding:25px;margin:25px auto;max-width:850px;box-shadow:0 2px 10px rgba(0,0,0,0.1);text-align:center;line-height:1.6;}
+.inspiracion{background:white;border-radius:16px;padding:25px;margin:25px auto;max-width:1050px;box-shadow:0 2px 10px rgba(0,0,0,0.1);text-align:center;line-height:1.6;}
 .inspiracion h2{color:#1a3a5f;margin-top:0;}
-.card{background:white;border-radius:16px;padding:25px;max-width:500px;margin:20px auto;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+.contenedor-paneles{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;max-width:1100px;margin:20px auto;padding:0 20px;}
+.card{background:white;border-radius:16px;padding:25px;flex:1;min-width:320px;max-width:520px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
 input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;}
 button{background:#2d5bff;color:white;border:none;padding:13px;width:100%;border-radius:25px;font-weight:bold;cursor:pointer;font-size:16px;}
 button:hover{background:#1e45cc;}
@@ -23,6 +24,11 @@ button:hover{background:#1e45cc;}
 .excelente{background:#d4edda;color:#155724;}
 .mejorar{background:#fff3cd;color:#856404;}
 .oculto{display:none;}
+.profesor{border:1px solid #e9eef5;border-radius:12px;padding:12px;margin-bottom:12px;background:#f9fbff;}
+.profesor b{color:#1a3a5f;font-size:15px;}
+.profesor span{display:block;font-size:13px;color:#555;margin-top:3px;}
+.profesor .tel{color:#2d5bff;font-weight:bold;margin-top:6px;}
+.profesor .tel a{color:#2d5bff;text-decoration:none;}
 footer{text-align:center;padding:20px;color:#777;font-size:13px;}
 </style>
 </head>
@@ -33,22 +39,19 @@ footer{text-align:center;padding:20px;color:#777;font-size:13px;}
 </header>
 
 <div class="hero">
-<img src="foto.jpg" alt="colegio sincelejo - niños estudiando" style="width:100%; border-radius:16px;">
+<img src="foto.jpg" alt="colegio sincelejo">
 </div>
 
 <div class="inspiracion">
 <h2>📚 Un futuro se escribe cada día</h2>
-<p>
-<strong>Queridos padres y estudiantes:</strong> esta página no es solo para ver notas, es para recordar que cada tarea entregada, cada esfuerzo en clase y cada materia superada es un ladrillo en el sueño que estamos construyendo juntos.
-<br><br>
-Para ti, hijo: no importa si hoy tienes una materia perdida, lo que importa es que tienes el valor de mejorar. Para ti, padre: tu acompañamiento vale más que una calificación. Cuando familia y escuela caminan juntas, no hay meta imposible.
-<br><br>
-<em>¡Aquí estamos para crecer, aprender y no rendirnos nunca!</em>
-</p>
+<p>Para ti, hijo: cada materia es una oportunidad. Para ti, padre: tu acompañamiento vale más que una calificación. ¡Si tienes dudas, contacta a los profesores!</p>
 </div>
 
+<div class="contenedor-paneles">
+
+<!-- PANEL 1: ESTUDIANTES -->
 <div class="card" id="loginCard">
-<h3 style="margin-top:0;">👨‍👩‍👧 Portal de Padres</h3>
+<h3 style="margin-top:0;">👨‍👩‍👧 Portal de Padres - Notas</h3>
 <p>Ingresa el documento para ver el avance académico</p>
 <label>Documento del estudiante</label>
 <input id="doc" placeholder="Ej: 1001234567">
@@ -56,42 +59,80 @@ Para ti, hijo: no importa si hoy tienes una materia perdida, lo que importa es q
 <input id="codigo" type="password" placeholder="Ej: 1234">
 <button onclick="consultar()">Consultar Notas</button>
 <p style="font-size:12px;text-align:center;margin-top:12px;color:#666;">Prueba demo: 1001234567 / código 1234</p>
-</div>
 
-<div class="card oculto" id="notasCard">
+<div class="oculto" id="notasCard" style="margin-top:20px;border-top:2px solid #eee;padding-top:15px;">
 <h3 id="nombreAlumno" style="color:#1a3a5f;"></h3>
 <div id="listaMaterias"></div>
 <div id="mensajeFinal" class="mensaje"></div>
-<button onclick="volver()" style="background:#6c757d;margin-top:15px;">Volver a consultar</button>
+<button onclick="volver()" style="background:#6c757d;margin-top:15px;">Cerrar notas</button>
+</div>
+</div>
+
+<!-- PANEL 2: PROFESORES - NUEVO -->
+<div class="card">
+<h3 style="margin-top:0;">👨‍🏫 Directorio de Profesores</h3>
+<p style="font-size:13px;color:#666;">Si tienes alguna inquietud sobre una materia, puedes comunicarte directamente con el docente.</p>
+<input id="buscarProfe" placeholder="Buscar por nombre o materia..." onkeyup="filtrarProfes()">
+
+<div id="listaProfes" style="margin-top:15px; max-height:450px; overflow-y:auto;">
+</div>
+<p style="font-size:11px;color:#888;margin-top:10px;text-align:center;">* Horario de atención: Lunes a Viernes 7am - 3pm</p>
+</div>
+
 </div>
 
 <footer>Gestoría Académica - Colegio Sincelejo - 2026</footer>
 
 <script>
+// DATOS DE ESTUDIANTES
 const estudiantes = {
   "1001234567": {
-    nombre: "Juan David Mercado - Grado 10° - Sincelejo",
+    nombre: "Juan David Mercado - Grado 10°",
     materias: [
-      {nombre:"Matemáticas", nota:3.2},
-      {nombre:"Español", nota:4.0},
-      {nombre:"Inglés", nota:2.8},
-      {nombre:"Ciencias Naturales", nota:3.5},
-      {nombre:"Sociales", nota:4.2},
-      {nombre:"Física", nota:3.0},
-      {nombre:"Química", nota:2.9},
-      {nombre:"Filosofía", nota:4.5},
-      {nombre:"Religión", nota:4.8},
-      {nombre:"Educación Física", nota:4.0},
-      {nombre:"Artística", nota:3.8},
-      {nombre:"Tecnología", nota:3.1}
+      {nombre:"Matemáticas", nota:3.2}, {nombre:"Español", nota:4.0}, {nombre:"Inglés", nota:2.8},
+      {nombre:"Ciencias Naturales", nota:3.5}, {nombre:"Sociales", nota:4.2}, {nombre:"Física", nota:3.0},
+      {nombre:"Química", nota:2.9}, {nombre:"Filosofía", nota:4.5}, {nombre:"Religión", nota:4.8},
+      {nombre:"Educación Física", nota:4.0}, {nombre:"Artística", nota:3.8}, {nombre:"Tecnología", nota:3.1}
     ]
   }
 };
+
+// DATOS DE PROFESORES - AQUÍ PUEDES CAMBIAR NOMBRES Y TELÉFONOS REALES
+const profesores = [
+  {nombre:"Lic. Carlos Romero", asignatura:"Matemáticas", telefono:"300 123 4567"},
+  {nombre:"Lic. Ana Marcela Vergara", asignatura:"Español y Literatura", telefono:"301 234 5678"},
+  {nombre:"Lic. Jhonatan Pérez", asignatura:"Inglés", telefono:"302 345 6789"},
+  {nombre:"Lic. Maria José Díaz", asignatura:"Ciencias Naturales - Biología", telefono:"300 987 6543"},
+  {nombre:"Lic. Luis Tovar", asignatura:"Sociales e Historia", telefono:"310 456 7890"},
+  {nombre:"Lic. Sofia Martinez", asignatura:"Física y Química", telefono:"311 567 8901"},
+  {nombre:"Lic. Pedro Fuentes", asignatura:"Filosofía y Religión", telefono:"312 678 9012"},
+  {nombre:"Lic. Andrea Buelvas", asignatura:"Educación Física", telefono:"313 789 0123"},
+  {nombre:"Lic. Jorge Benitez", asignatura:"Artística y Tecnología", telefono:"314 890 1234"}
+];
+
+function mostrarProfes(lista){
+  let html = "";
+  lista.forEach(p => {
+    html += `<div class="profesor">
+      <b>${p.nombre}</b>
+      <span>📘 Materia: ${p.asignatura}</span>
+      <span class="tel">📞 <a href="tel:${p.telefono.replace(/ /g,'')}">${p.telefono}</a> - <a href="https://wa.me/57${p.telefono.replace(/ /g,'')}" target="_blank">WhatsApp</a></span>
+    </div>`;
+  });
+  document.getElementById('listaProfes').innerHTML = html;
+}
+function filtrarProfes(){
+  const texto = document.getElementById('buscarProfe').value.toLowerCase();
+  const filtrados = profesores.filter(p => p.nombre.toLowerCase().includes(texto) || p.asignatura.toLowerCase().includes(texto));
+  mostrarProfes(filtrados);
+}
+// Mostrar todos al cargar
+mostrarProfes(profesores);
+
 function consultar(){
   const doc = document.getElementById('doc').value.trim();
   if(!estudiantes[doc]){ alert("Documento no encontrado. Usa 1001234567 para probar"); return; }
   const est = estudiantes[doc];
-  document.getElementById('loginCard').classList.add('oculto');
   document.getElementById('notasCard').classList.remove('oculto');
   document.getElementById('nombreAlumno').innerText = est.nombre;
   let html = ""; let perdidas = 0;
@@ -103,16 +144,15 @@ function consultar(){
   document.getElementById('listaMaterias').innerHTML = html;
   const mensajeDiv = document.getElementById('mensajeFinal');
   if(perdidas === 0){
-    mensajeDiv.innerText = "¡Excelente! Todas las materias ganadas. ¡Felicitaciones por tu esfuerzo!";
+    mensajeDiv.innerText = "¡Excelente! Todas las materias ganadas.";
     mensajeDiv.className = "mensaje excelente";
   } else {
-    mensajeDiv.innerText = `Tiene ${perdidas} materias perdidas. Puede mejorar con dedicación y apoyo familiar. ¡Tú puedes!`;
+    mensajeDiv.innerText = `Tiene ${perdidas} materias perdidas. Puede mejorar. ¡Anímate a hablar con el profesor!`;
     mensajeDiv.className = "mensaje mejorar";
   }
 }
 function volver(){
   document.getElementById('notasCard').classList.add('oculto');
-  document.getElementById('loginCard').classList.remove('oculto');
 }
 </script>
 </body>
