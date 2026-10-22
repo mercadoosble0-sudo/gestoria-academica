@@ -3,48 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gestoría Académica</title>
+<title>Gestoria academica</title>
 <style>
-body{font-family:Arial; background:#f4f6f9; margin:0; padding:20px;}
-h1{color:#1a3a5f;}
-.card{background:white; border-radius:12px; padding:20px; box-shadow:0 2px 10px rgba(0,0,0,0.1); max-width:500px; margin:20px auto;}
-input{width:100%; padding:12px; margin:8px 0; border:1px solid #ccc; border-radius:8px;}
-button{background:#2d5bff; color:white; border:none; padding:12px; width:100%; border-radius:20px; font-weight:bold; cursor:pointer;}
-.materia{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee;}
-.ganada{color:green; font-weight:bold;}
-.perdida{color:red; font-weight:bold;}
-.mensaje{margin-top:15px; padding:12px; border-radius:8px; text-align:center; font-weight:bold;}
+body{font-family:Arial,sans-serif; background:#eef2f7; margin:0; padding:0; color:#333;}
+header{background:#1a3a5f; color:white; text-align:center; padding:30px 15px;}
+header h1{margin:0; font-size:32px; letter-spacing:1px;}
+header p{margin:5px 0 0; opacity:0.9; font-size:16px;}
+.hero{max-width:900px; margin:0 auto; padding:20px;}
+.hero img{width:100%; border-radius:16px; box-shadow:0 4px 15px rgba(0,0,0,0.2);}
+.inspiracion{background:white; border-radius:16px; padding:25px; margin:25px auto; max-width:850px; box-shadow:0 2px 10px rgba(0,0,0,0.1); text-align:center; line-height:1.6;}
+.inspiracion h2{color:#1a3a5f; margin-top:0;}
+.card{background:white; border-radius:16px; padding:25px; max-width:500px; margin:20px auto; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+input{width:100%; padding:12px; margin:10px 0; border:1px solid #ccc; border-radius:8px; box-sizing:border-box;}
+button{background:#2d5bff; color:white; border:none; padding:13px; width:100%; border-radius:25px; font-weight:bold; cursor:pointer; font-size:16px;}
+button:hover{background:#1e45cc;}
+.materia{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #eee;}
+.ganada{color:#1a9b4a; font-weight:bold;}
+.perdida{color:#e63946; font-weight:bold;}
+.mensaje{margin-top:18px; padding:14px; border-radius:10px; text-align:center; font-weight:bold;}
 .excelente{background:#d4edda; color:#155724;}
 .mejorar{background:#fff3cd; color:#856404;}
 .oculto{display:none;}
+footer{text-align:center; padding:20px; color:#777; font-size:13px;}
 </style>
 </head>
 <body>
-<h1>Gestoría Académica</h1>
-<p>Mi página de historia académica para la clase - Colegio de Sincelejo</p>
+
+<header>
+<h1>Gestoria academica</h1>
+<p>mi pagina de historia academica para la clase / colegio sincelejo</p>
+</header>
+
+<div class="hero">
+<img src="https://images.unsplash.com/photo-1588075592446-265fd1e4f15f?q=80&w=1200&auto=format&fit=crop" alt="niños en la escuela haciendo tareas">
+</div>
+
+<div class="inspiracion">
+<h2>📚 Un futuro se escribe cada día</h2>
+<p>
+<strong>Queridos padres y estudiantes:</strong> esta página no es solo para ver notas, es para recordar que cada tarea entregada, cada esfuerzo en clase y cada materia superada es un ladrillo en el sueño que estamos construyendo juntos.
+<br><br>
+Para ti, hijo: no importa si hoy tienes una materia perdida, lo que importa es que tienes el valor de mejorar. Para ti, padre: tu acompañamiento vale más que una calificación. Cuando familia y escuela caminan juntas, no hay meta imposible.
+<br><br>
+<em>¡Aquí estamos para crecer, aprender y no rendirnos nunca!</em>
+</p>
+</div>
 
 <div class="card" id="loginCard">
-<h3>📚 Portal de Padres</h3>
-<p>Ingresa el documento de tu hijo para ver su avance</p>
+<h3 style="margin-top:0;">👨‍👩‍👧 Portal de Padres</h3>
+<p>Ingresa el documento para ver el avance académico</p>
 <label>Documento del estudiante</label>
 <input id="doc" placeholder="Ej: 1001234567">
 <label>Contraseña / Código</label>
-<input id="codigo" placeholder="Ej: 1234" type="password">
+<input id="codigo" type="password" placeholder="Ej: 1234">
 <button onclick="consultar()">Consultar Notas</button>
-<p style="font-size:12px; text-align:center; margin-top:10px;">Prueba con: 1001234567 / código 1234</p>
+<p style="font-size:12px; text-align:center; margin-top:12px; color:#666;">Prueba demo: 1001234567 / código 1234</p>
 </div>
 
 <div class="card oculto" id="notasCard">
-<h3 id="nombreAlumno"></h3>
+<h3 id="nombreAlumno" style="color:#1a3a5f;"></h3>
 <div id="listaMaterias"></div>
 <div id="mensajeFinal" class="mensaje"></div>
 <button onclick="volver()" style="background:#6c757d; margin-top:15px;">Volver a consultar</button>
 </div>
 
+<footer>Gestoría Académica - Colegio Sincelejo - 2026</footer>
+
 <script>
 const estudiantes = {
   "1001234567": {
-    nombre: "Juan David Mercado - Grado 10°",
+    nombre: "Juan David Mercado - Grado 10° - Sincelejo",
     materias: [
       {nombre:"Matemáticas", nota:3.2},
       {nombre:"Español", nota:4.0},
@@ -59,41 +87,28 @@ const estudiantes = {
       {nombre:"Artística", nota:3.8},
       {nombre:"Tecnología", nota:3.1}
     ]
-  },
-  "1001234568": {
-    nombre: "Ana Sofia - Grado 11°",
-    materias: [
-      {nombre:"Matemáticas", nota:4.5},{nombre:"Español", nota:4.5},{nombre:"Inglés", nota:4.2},{nombre:"Ciencias Naturales", nota:4.8},{nombre:"Sociales", nota:4.6},{nombre:"Física", nota:4.3},{nombre:"Química", nota:4.4},{nombre:"Filosofía", nota:4.7},{nombre:"Religión", nota:5.0},{nombre:"Educación Física", nota:4.9},{nombre:"Artística", nota:4.6},{nombre:"Tecnología", nota:4.8}
-    ]
   }
 };
-
 function consultar(){
   const doc = document.getElementById('doc').value.trim();
-  if(!estudiantes[doc]){
-    alert("Documento no encontrado. Usa 1001234567 para probar");
-    return;
-  }
+  if(!estudiantes[doc]){ alert("Documento no encontrado. Usa 1001234567 para probar"); return; }
   const est = estudiantes[doc];
   document.getElementById('loginCard').classList.add('oculto');
   document.getElementById('notasCard').classList.remove('oculto');
   document.getElementById('nombreAlumno').innerText = est.nombre;
-  
-  let html = "";
-  let perdidas = 0;
+  let html = ""; let perdidas = 0;
   est.materias.forEach(m => {
     const estado = m.nota >= 3.0 ? `<span class="ganada">Ganada - ${m.nota}</span>` : `<span class="perdida">Perdida - ${m.nota}</span>`;
     if(m.nota < 3.0) perdidas++;
     html += `<div class="materia"><span>${m.nombre}</span>${estado}</div>`;
   });
   document.getElementById('listaMaterias').innerHTML = html;
-
   const mensajeDiv = document.getElementById('mensajeFinal');
   if(perdidas === 0){
-    mensajeDiv.innerText = "¡Excelente! Todas las materias ganadas. ¡Felicitaciones!";
+    mensajeDiv.innerText = "¡Excelente! Todas las materias ganadas. ¡Felicitaciones por tu esfuerzo!";
     mensajeDiv.className = "mensaje excelente";
   } else {
-    mensajeDiv.innerText = `Tiene ${perdidas} materias perdidas. Puede mejorar con dedicación y apoyo.`;
+    mensajeDiv.innerText = `Tiene ${perdidas} materias perdidas. Puede mejorar con dedicación y apoyo familiar. ¡Tú puedes!`;
     mensajeDiv.className = "mensaje mejorar";
   }
 }
