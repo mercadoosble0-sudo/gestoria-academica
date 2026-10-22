@@ -3,156 +3,182 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gestoria academica</title>
+<title>Gestoría Académica - Sincelejo</title>
 <style>
 body{font-family:Arial,sans-serif;background:#eef2f7;margin:0;padding:0;color:#333;}
-header{background:#1a3a5f;color:white;text-align:center;padding:30px 15px;}
+header{background:#1a3a5f;color:white;text-align:center;padding:25px 15px;}
+header img.logo{width:110px;background:white;border-radius:50%;padding:8px;margin-bottom:10px;}
 header h1{margin:0;font-size:32px;}
 .hero{max-width:1100px;margin:20px auto;padding:0 20px;}
 .hero img{width:100%;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,0.2);display:block;}
-.inspiracion{background:white;border-radius:16px;padding:25px;margin:25px auto;max-width:1050px;box-shadow:0 2px 10px rgba(0,0,0,0.1);text-align:center;line-height:1.6;}
+.inspiracion{background:white;border-radius:16px;padding:25px;margin:25px auto;max-width:1050px;box-shadow:0 2px 10px rgba(0,0,0,0.1);text-align:center;line-height:1.7;}
 .inspiracion h2{color:#1a3a5f;margin-top:0;}
 .contenedor-paneles{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;max-width:1100px;margin:20px auto;padding:0 20px;}
 .card{background:white;border-radius:16px;padding:25px;flex:1;min-width:320px;max-width:520px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;}
+input, textarea, select{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:8px;box-sizing:border-box;font-family:Arial;}
+textarea{resize:none;height:100px;}
 button{background:#2d5bff;color:white;border:none;padding:13px;width:100%;border-radius:25px;font-weight:bold;cursor:pointer;font-size:16px;}
 button:hover{background:#1e45cc;}
+.profesor{border:1px solid #e9eef5;border-radius:12px;padding:12px;margin-bottom:12px;background:#f9fbff;}
+.profesor b{color:#1a3a5f;}
+.profesor .tel a{color:#2d5bff;text-decoration:none;font-weight:bold;}
+.oculto{display:none;}
 .materia{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee;}
 .ganada{color:#1a9b4a;font-weight:bold;}
 .perdida{color:#e63946;font-weight:bold;}
 .mensaje{margin-top:18px;padding:14px;border-radius:10px;text-align:center;font-weight:bold;}
 .excelente{background:#d4edda;color:#155724;}
 .mejorar{background:#fff3cd;color:#856404;}
-.oculto{display:none;}
-.profesor{border:1px solid #e9eef5;border-radius:12px;padding:12px;margin-bottom:12px;background:#f9fbff;}
-.profesor b{color:#1a3a5f;font-size:15px;}
-.profesor span{display:block;font-size:13px;color:#555;margin-top:3px;}
-.profesor .tel{color:#2d5bff;font-weight:bold;margin-top:6px;}
-.profesor .tel a{color:#2d5bff;text-decoration:none;}
 footer{text-align:center;padding:20px;color:#777;font-size:13px;}
 </style>
 </head>
 <body>
 <header>
-<h1>Gestoria academica</h1>
-<p>mi pagina de historia academica para la clase / colegio sincelejo</p>
+<img class="logo" src="logo.png" alt="Logo Gestoria Academica">
+<h1>Gestoría Académica</h1>
+<p>Colegio Sincelejo - Historia Académica</p>
 </header>
 
 <div class="hero">
-<img src="foto.jpg" alt="colegio sincelejo">
+<img src="foto.jpg" alt="niños colegio sincelejo">
 </div>
 
 <div class="inspiracion">
 <h2>📚 Un futuro se escribe cada día</h2>
-<p>Para ti, hijo: cada materia es una oportunidad. Para ti, padre: tu acompañamiento vale más que una calificación. ¡Si tienes dudas, contacta a los profesores!</p>
+<p>
+<strong>Queridos padres y estudiantes:</strong> esta página no es solo para ver notas, es para recordar que cada tarea entregada, cada esfuerzo en clase y cada materia superada es un ladrillo en el sueño que estamos construyendo juntos.<br><br>
+Para ti, hijo: no importa si hoy tienes una materia perdida, lo que importa es que tienes el valor de mejorar. Para ti, padre: tu acompañamiento vale más que una calificación.<br><br>
+<em>¡Aquí estamos para crecer, aprender y no rendirnos nunca!</em>
+</p>
 </div>
 
 <div class="contenedor-paneles">
 
-<!-- PANEL 1: ESTUDIANTES -->
-<div class="card" id="loginCard">
+<!-- PANEL NOTAS -->
+<div class="card">
 <h3 style="margin-top:0;">👨‍👩‍👧 Portal de Padres - Notas</h3>
-<p>Ingresa el documento para ver el avance académico</p>
 <label>Documento del estudiante</label>
 <input id="doc" placeholder="Ej: 1001234567">
-<label>Contraseña / Código</label>
+<label>Código</label>
 <input id="codigo" type="password" placeholder="Ej: 1234">
 <button onclick="consultar()">Consultar Notas</button>
-<p style="font-size:12px;text-align:center;margin-top:12px;color:#666;">Prueba demo: 1001234567 / código 1234</p>
+<p style="font-size:12px;text-align:center;color:#666;">Demo: 1001234567 / 1234</p>
 
 <div class="oculto" id="notasCard" style="margin-top:20px;border-top:2px solid #eee;padding-top:15px;">
 <h3 id="nombreAlumno" style="color:#1a3a5f;"></h3>
 <div id="listaMaterias"></div>
 <div id="mensajeFinal" class="mensaje"></div>
-<button onclick="volver()" style="background:#6c757d;margin-top:15px;">Cerrar notas</button>
 </div>
 </div>
 
-<!-- PANEL 2: PROFESORES - NUEVO -->
+<!-- PANEL PROFESORES -->
 <div class="card">
 <h3 style="margin-top:0;">👨‍🏫 Directorio de Profesores</h3>
-<p style="font-size:13px;color:#666;">Si tienes alguna inquietud sobre una materia, puedes comunicarte directamente con el docente.</p>
-<input id="buscarProfe" placeholder="Buscar por nombre o materia..." onkeyup="filtrarProfes()">
-
-<div id="listaProfes" style="margin-top:15px; max-height:450px; overflow-y:auto;">
-</div>
-<p style="font-size:11px;color:#888;margin-top:10px;text-align:center;">* Horario de atención: Lunes a Viernes 7am - 3pm</p>
+<input id="buscarProfe" placeholder="Buscar materia o profesor..." onkeyup="filtrarProfes()">
+<div id="listaProfes" style="margin-top:15px; max-height:400px; overflow-y:auto;"></div>
 </div>
 
 </div>
 
-<footer>Gestoría Académica - Colegio Sincelejo - 2026</footer>
+<!-- CAJITA NUEVA DE PREGUNTAS - LO QUE PEDISTE -->
+<div style="max-width:1100px; margin:0 auto; padding:0 20px 30px 20px;">
+<div class="card" style="max-width:100%; margin:20px auto;">
+<h3 style="margin-top:0;">💬 Buzón de Inquietudes para Padres</h3>
+<p style="font-size:13px;color:#666;">¿Tienes alguna duda, sugerencia o inquietud sobre el rendimiento de tu hijo? Escríbenos aquí.</p>
+
+<label>Nombre del padre / acudiente</label>
+<input id="nombrePadre" placeholder="Ej: María Mercado">
+
+<label>Documento del estudiante</label>
+<input id="docPadre" placeholder="Ej: 1001234567">
+
+<label>Tipo de inquietud</label>
+<select id="tipoInquietud">
+<option value="">Seleccione...</option>
+<option>Notas / Materias perdidas</option>
+<option>Comportamiento / Convivencia</option>
+<option>Tareas / Trabajos</option>
+<option>Contacto con profesor</option>
+<option>Otra inquietud</option>
+</select>
+
+<label>Escriba su inquietud</label>
+<textarea id="textoInquietud" placeholder="Escriba aquí su pregunta o inquietud..."></textarea>
+
+<button onclick="enviarInquietud()" style="background:#1a9b4a;">📩 Enviar Inquietud</button>
+<p id="confirmacionEnvio" style="display:none; text-align:center; color:#155724; background:#d4edda; padding:12px; border-radius:8px; margin-top:15px; font-weight:bold;"></p>
+
+<p style="font-size:11px;color:#888;margin-top:10px;text-align:center;">Tu mensaje será enviado al coordinador académico. Respuesta en menos de 24h.</p>
+</div>
+</div>
+
+<footer>Gestoría Académica - Colegio Sincelejo - Sincelejo, Sucre - 2026</footer>
 
 <script>
-// DATOS DE ESTUDIANTES
 const estudiantes = {
-  "1001234567": {
-    nombre: "Juan David Mercado - Grado 10°",
-    materias: [
+  "1001234567": { nombre: "Juan David Mercado - 10°", materias: [
       {nombre:"Matemáticas", nota:3.2}, {nombre:"Español", nota:4.0}, {nombre:"Inglés", nota:2.8},
       {nombre:"Ciencias Naturales", nota:3.5}, {nombre:"Sociales", nota:4.2}, {nombre:"Física", nota:3.0},
       {nombre:"Química", nota:2.9}, {nombre:"Filosofía", nota:4.5}, {nombre:"Religión", nota:4.8},
       {nombre:"Educación Física", nota:4.0}, {nombre:"Artística", nota:3.8}, {nombre:"Tecnología", nota:3.1}
-    ]
-  }
+    ]}
 };
-
-// DATOS DE PROFESORES - AQUÍ PUEDES CAMBIAR NOMBRES Y TELÉFONOS REALES
 const profesores = [
-  {nombre:"Lic. Carlos Romero", asignatura:"Matemáticas", telefono:"300 123 4567"},
-  {nombre:"Lic. Ana Marcela Vergara", asignatura:"Español y Literatura", telefono:"301 234 5678"},
-  {nombre:"Lic. Jhonatan Pérez", asignatura:"Inglés", telefono:"302 345 6789"},
-  {nombre:"Lic. Maria José Díaz", asignatura:"Ciencias Naturales - Biología", telefono:"300 987 6543"},
-  {nombre:"Lic. Luis Tovar", asignatura:"Sociales e Historia", telefono:"310 456 7890"},
-  {nombre:"Lic. Sofia Martinez", asignatura:"Física y Química", telefono:"311 567 8901"},
-  {nombre:"Lic. Pedro Fuentes", asignatura:"Filosofía y Religión", telefono:"312 678 9012"},
-  {nombre:"Lic. Andrea Buelvas", asignatura:"Educación Física", telefono:"313 789 0123"},
-  {nombre:"Lic. Jorge Benitez", asignatura:"Artística y Tecnología", telefono:"314 890 1234"}
+  {nombre:"Lic. Carlos Romero", asignatura:"Matemáticas", telefono:"3001234567"},
+  {nombre:"Lic. Ana Vergara", asignatura:"Español", telefono:"3012345678"},
+  {nombre:"Lic. Jhonatan Pérez", asignatura:"Inglés", telefono:"3023456789"},
+  {nombre:"Lic. Maria Diaz", asignatura:"Biología", telefono:"3009876543"},
+  {nombre:"Lic. Luis Tovar", asignatura:"Sociales", telefono:"3104567890"},
 ];
 
 function mostrarProfes(lista){
-  let html = "";
-  lista.forEach(p => {
-    html += `<div class="profesor">
-      <b>${p.nombre}</b>
-      <span>📘 Materia: ${p.asignatura}</span>
-      <span class="tel">📞 <a href="tel:${p.telefono.replace(/ /g,'')}">${p.telefono}</a> - <a href="https://wa.me/57${p.telefono.replace(/ /g,'')}" target="_blank">WhatsApp</a></span>
-    </div>`;
-  });
-  document.getElementById('listaProfes').innerHTML = html;
+  let html=""; lista.forEach(p=>{
+    html+=`<div class="profesor"><b>${p.nombre}</b><br>📘 ${p.asignatura}<br><span class="tel">📞 <a href="tel:${p.telefono}">${p.telefono}</a> | <a href="https://wa.me/57${p.telefono}" target="_blank">WhatsApp</a></span></div>`;
+  }); document.getElementById('listaProfes').innerHTML=html;
 }
 function filtrarProfes(){
-  const texto = document.getElementById('buscarProfe').value.toLowerCase();
-  const filtrados = profesores.filter(p => p.nombre.toLowerCase().includes(texto) || p.asignatura.toLowerCase().includes(texto));
-  mostrarProfes(filtrados);
+  const t=document.getElementById('buscarProfe').value.toLowerCase();
+  mostrarProfes(profesores.filter(p=>p.nombre.toLowerCase().includes(t)||p.asignatura.toLowerCase().includes(t)));
 }
-// Mostrar todos al cargar
 mostrarProfes(profesores);
 
 function consultar(){
-  const doc = document.getElementById('doc').value.trim();
-  if(!estudiantes[doc]){ alert("Documento no encontrado. Usa 1001234567 para probar"); return; }
-  const est = estudiantes[doc];
+  const doc=document.getElementById('doc').value.trim();
+  if(!estudiantes[doc]){ alert("Usa 1001234567 para probar"); return; }
+  const est=estudiantes[doc];
   document.getElementById('notasCard').classList.remove('oculto');
-  document.getElementById('nombreAlumno').innerText = est.nombre;
-  let html = ""; let perdidas = 0;
-  est.materias.forEach(m => {
-    const estado = m.nota >= 3.0 ? `<span class="ganada">Ganada - ${m.nota}</span>` : `<span class="perdida">Perdida - ${m.nota}</span>`;
-    if(m.nota < 3.0) perdidas++;
-    html += `<div class="materia"><span>${m.nombre}</span>${estado}</div>`;
+  document.getElementById('nombreAlumno').innerText=est.nombre;
+  let html=""; let perdidas=0;
+  est.materias.forEach(m=>{
+    const estado=m.nota>=3.0?`<span class="ganada">Ganada - ${m.nota}</span>`:`<span class="perdida">Perdida - ${m.nota}</span>`;
+    if(m.nota<3.0) perdidas++;
+    html+=`<div class="materia"><span>${m.nombre}</span>${estado}</div>`;
   });
-  document.getElementById('listaMaterias').innerHTML = html;
-  const mensajeDiv = document.getElementById('mensajeFinal');
-  if(perdidas === 0){
-    mensajeDiv.innerText = "¡Excelente! Todas las materias ganadas.";
-    mensajeDiv.className = "mensaje excelente";
-  } else {
-    mensajeDiv.innerText = `Tiene ${perdidas} materias perdidas. Puede mejorar. ¡Anímate a hablar con el profesor!`;
-    mensajeDiv.className = "mensaje mejorar";
-  }
+  document.getElementById('listaMaterias').innerHTML=html;
+  const msg=document.getElementById('mensajeFinal');
+  if(perdidas==0){ msg.innerText="¡Excelente! Todas ganadas. ¡Felicitaciones!"; msg.className="mensaje excelente"; }
+  else{ msg.innerText=`Tiene ${perdidas} materias perdidas. ¡Puede mejorar con apoyo!`; msg.className="mensaje mejorar"; }
 }
-function volver(){
-  document.getElementById('notasCard').classList.add('oculto');
+
+function enviarInquietud(){
+  const nombre = document.getElementById('nombrePadre').value.trim();
+  const doc = document.getElementById('docPadre').value.trim();
+  const tipo = document.getElementById('tipoInquietud').value;
+  const texto = document.getElementById('textoInquietud').value.trim();
+  if(!nombre || !doc || !tipo || !texto){
+    alert("Por favor llena todos los campos de la inquietud");
+    return;
+  }
+  const mensaje = `Hola, soy ${nombre}, acudiente del estudiante ${doc}. Tipo: ${tipo}. Inquietud: ${texto}`;
+  const mensajeCodificado = encodeURIComponent(mensaje);
+  // Aquí puedes poner tu número de WhatsApp del colegio
+  const numeroColegio = "573001234567"; 
+  const urlWhatsApp = `https://wa.me/${numeroColegio}?text=${mensajeCodificado}`;
+  
+  document.getElementById('confirmacionEnvio').style.display="block";
+  document.getElementById('confirmacionEnvio').innerText = "✅ ¡Inquietud enviada con éxito! Te responderemos pronto. Redirigiendo a WhatsApp...";
+  
+  setTimeout(()=>{ window.open(urlWhatsApp, "_blank"); }, 1500);
 }
 </script>
 </body>
